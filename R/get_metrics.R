@@ -11,7 +11,7 @@ get_metrics <- function() {
 
   # Perform POST request with httr
   response <- tryCatch(
-    httr::POST(
+    httr::GET(
       url = url,
       .add_gps_headers(config$version)),
     error = function(e) {
