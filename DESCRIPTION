@@ -1,16 +1,29 @@
 Package: athletegps
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Access STATSports GPS Data via Third-party 'APIs'
+Version: 1.0.0
 Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
-  )
-Description: More about what it does (maybe more than one line).
-    Continuation lines should be indented.
-License: What license is it under?
+    person("Abdurrahman", "Kikhia",email = "a.kikhia11@gmail.com",role = c("aut", "cre")))
+Description: Provides helper functions and wrappers to simplify authentication, data retrieval, and result processing from 'STATSports' 'APIs'.
+    Designed to streamline integration for practictioners, analysts, and researchers working with GPS data. For further documentation on integrating with 'STATSports' 'APIs', 
+    see: <https://elitesupport.statsports.com/hc/en-us/articles/13494019543965-Share-Data>
+License: MIT + file LICENSE
 Encoding: UTF-8
+Depends: 
+    R (>= 3.5)
 LazyData: true
+RoxygenNote: 7.3.3
+URL: https://github.com/a-kikhia11/athletegps
+BugReports: https://github.com/a-kikhia11/athletegps/issues
+Imports:
+    dplyr,
+    httr,
+    jsonlite,
+    keyring,
+    lubridate,
+    magrittr,
+    purrr,
+    tidyr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
