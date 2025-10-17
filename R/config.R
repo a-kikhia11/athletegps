@@ -186,7 +186,8 @@ get_config <- function(safe = TRUE, quiet = FALSE) {
 #' @keywords internal
 #' @noRd
 .add_gps_body <- function(key,date) {
-  list(ThirdPartyApiId = key,sessionDate = date)
+  jsonlite::toJSON(list(ThirdPartyApiId = key,sessionDate = date),
+                   auto_unbox = TRUE,null = "null")
 }
 
 #' Add headers to API requests for logging purposes
@@ -195,7 +196,8 @@ get_config <- function(safe = TRUE, quiet = FALSE) {
 #' @keywords internal
 #' @noRd
 .add_gps_headers <- function(vers) {
-  httr::add_headers("api-version" = vers)
+  httr::add_headers("api-version" = vers,"Accept" = "application/json",
+                    "Content-Type" = "application/json")
 }
 
 #' Handle API response errors consistently across package functions

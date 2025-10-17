@@ -14,19 +14,8 @@ get_profiles <- function() {
   # Perform POST request with httr
   response <- tryCatch(
     httr::POST(url = url,
-               body = jsonlite::toJSON(
-                 list(
-                   ThirdPartyApiId = api_key,
-                   sessionDate = NULL
-                 ),
-                 auto_unbox = TRUE,
-                 null = "null"
-               ),
-               httr::add_headers(
-                 "api-version" = config$version,
-                 "Accept" = "application/json",
-                 "Content-Type" = "application/json"
-               )),
+               body = .add_gps_body(api_key,date = NULL),
+               .add_gps_headers(config$version)),
     error = function(e) {
       stop("Failed to connect to the Profiles API: ", e$message, call. = FALSE)
     }
