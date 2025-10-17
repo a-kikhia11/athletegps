@@ -5,7 +5,7 @@
 #' @return A data frame containing ALL GPS Metrics.
 #' @export
 get_metrics <- function() {
-  config <- get_config(quiet = TRUE)
+  config <- athletegps::get_config(quiet = TRUE)
   # Get API Key and URL
   url <- paste0(config$endpoints$metrics)
 
@@ -22,7 +22,7 @@ get_metrics <- function() {
   .handle_api_response(response)
 
   # Parse JSON body safely
-  body_txt <- httr::content(req_D, as = "text", encoding = "UTF-8")
+  body_txt <- httr::content(response, as = "text", encoding = "UTF-8")
   metrics <- tryCatch(
     jsonlite::fromJSON(body_txt),
     error = function(e) {
