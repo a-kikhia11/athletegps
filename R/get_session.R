@@ -18,7 +18,7 @@ get_session <- function(session_date, drills = TRUE, metrics = NULL) {
     stop("Session date not set. Please provide a valid date in ISO 8601 UTC format (YYYY-MM-DD) first.")
   } else {
     # Validate format if supplied directly
-    if (!grepl("^\\d{4}-\\d{2}-\\d{2}$", start_date)) {
+    if (!grepl("^\\d{4}-\\d{2}-\\d{2}$", session_date)) {
       stop("`session_date` must be in ISO 8601 format: e.g., '2025-06-25'")
     }
   }
