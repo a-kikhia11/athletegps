@@ -43,7 +43,7 @@ get_raw <- function(rawDataId) {
     )
 
     if (raw$nextPage < 0) {
-      message("No more tests to retrieve. Stopping pagination.")
+      message("No more data to retrieve. Stopping pagination.")
       break
     }
 
