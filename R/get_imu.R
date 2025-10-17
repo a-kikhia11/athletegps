@@ -21,18 +21,12 @@ get_imu_only <- function(rawDataId) {
 
   repeat {
 
-    # Build request body
-    body <- list(
-      thirdPartyApiId = api_key,
-      rawDataId = rawDataId,
-      page = page
-    )
-
     # Perform POST request with httr
     response <- tryCatch(
       httr::POST(
         url = url,
-        body = body,
+        body = jsonlite::toJSON(list(thirdPartyApiId = api_key,rawDataId = rawDataId,nextPage = page),
+                                auto_unbox = TRUE,null = "null"),
         .add_gps_headers(config$version)),
       error = function(e) {
         stop("Failed to connect to the 'getSessionImuData' API Endpoint: ", e$message, call. = FALSE)
@@ -62,7 +56,7 @@ get_imu_only <- function(rawDataId) {
       break
     }
 
-    Sys.sleep(0.2) # Pause to respect rate limits
+    Sys.sleep(1.5) # Pause to respect rate limits
   }
 
 
