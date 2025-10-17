@@ -5,7 +5,7 @@
 #' @return A data frame containing ALL GPS Metrics.
 #' @export
 get_metrics <- function() {
-  config <- athletegps::get_config(quiet = TRUE)
+  config <- get_config(quiet = TRUE)
   # Get API Key and URL
   url <- paste0(config$endpoints$metrics)
 
