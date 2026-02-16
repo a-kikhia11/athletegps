@@ -117,8 +117,8 @@ get_session <- function(session_date, drills = TRUE, metrics = NULL) {
   if (!is.null(gps_data) && length(gps_data) > 0) {
     return(gps_data)
   } else {
-    return(NULL)
-    stop("No 'session' data found in API response.", call. = FALSE)
+    cat("No 'session' data found in API response.", call. = FALSE)
+    return(gps_data)
   }
 
 }
