@@ -45,6 +45,9 @@ get_session <- function(session_date, drills = TRUE, metrics = NULL) {
 
   # Parse JSON body safely
   body_txt <- httr::content(response, as = "text", encoding = "UTF-8")
+  if (nchar(body_txt) == 0) {
+    return(NULL)
+  }
   gps_data <- tryCatch(
     jsonlite::fromJSON(body_txt),
     error = function(e) {
@@ -114,6 +117,7 @@ get_session <- function(session_date, drills = TRUE, metrics = NULL) {
   if (!is.null(gps_data) && length(gps_data) > 0) {
     return(gps_data)
   } else {
+    return(NULL)
     stop("No 'session' data found in API response.", call. = FALSE)
   }
 
