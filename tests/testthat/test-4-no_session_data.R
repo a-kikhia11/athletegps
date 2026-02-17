@@ -5,17 +5,15 @@ test_that("STEP 1: API credentials can be set", {
   clear_all_credentials()
 
   result <- set_credentials(
-    api_key = Sys.getenv("api_key")
+    api_key = api_key
   )
 
   expect_true(!is.null(result))
 })
 
 test_that("STEP 2: Session Data is Retrieved, but returns empty if no data found", {
-  clear_all_credentials()
-  reset_credentials()
 
-  result <- length(key_list(service="statsports_credentials"))
+  result <- get_session("2025-01-01",drills = FALSE)
 
-  expect_equal(result, 2)
+  expect_equal(result, NULL)
 })

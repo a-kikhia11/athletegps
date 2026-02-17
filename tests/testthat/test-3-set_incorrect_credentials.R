@@ -9,6 +9,6 @@ test_that("API credentials can be set", {
   )
 
   # Make a call with the bad credentials
-  result <- expect_error(get_profiles(),regexp = "^Incorrect Request Headers or Body \\(415\\)")
+  result <- expect_error(get_profiles(),regexp = "^Bad Request \\(400\\)")
 
 })

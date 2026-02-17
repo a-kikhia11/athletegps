@@ -5,7 +5,7 @@ test_that("STEP 1: API credentials can be set", {
   clear_all_credentials()
 
   result <- set_credentials(
-    api_key = Sys.getenv("api_key")
+    api_key = api_key
     )
 
     expect_true(!is.null(result))

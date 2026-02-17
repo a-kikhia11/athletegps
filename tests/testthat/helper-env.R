@@ -5,6 +5,8 @@
 library(jsonlite)
 library(keyring)
 
+api_key <- "2d1f9e0a-513f-4eea-994c-f588b0a65597"
+
 # DELETE EXISTING CREDS ----
 # Simulates a fresh install
 # Tests involving a reinstall should expect pre-existing config and tokens
@@ -39,6 +41,6 @@ clear_env_creds <- function() {
 # Reload credentials and token
 reset_credentials <- function() {
   set_credentials(
-    api_key = Sys.getenv("api_key")
+    api_key = api_key
   )
 }
